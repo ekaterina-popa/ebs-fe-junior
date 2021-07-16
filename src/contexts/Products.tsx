@@ -4,9 +4,9 @@ import { IProduct, ICartItem, ProductsContextType } from 'type';
 const contextDefaultValues: ProductsContextType = {
   products: [],
   cartItems: [],
-  addProduct: () => { },
-  removeProduct: () => { },
-  fetchProducts: () => { },
+  addProduct: () => {},
+  removeProduct: () => {},
+  fetchProducts: () => {},
 };
 
 export const ProductsContext = React.createContext<ProductsContextType>(contextDefaultValues);
@@ -21,25 +21,18 @@ const ProductsProvider: React.FC = ({ children }) => {
       .then((data) => setProducts(data));
 
   const addProduct = (newItem) => {
-    setCartItems(prev => {
+    setCartItems((prev) => {
       const foundItem = prev.find((item) => item.id === newItem.id);
 
       if (foundItem) {
-        return prev.map(item =>
-          item.id === newItem.id
-            ?
-            { ...item, quantity: item.quantity + 1 }
-            : item
-        )
+        return prev.map((item) => (item.id === newItem.id ? { ...item, quantity: item.quantity + 1 } : item));
       }
-      return [...prev, { ...newItem, quantity: 1 }]
-    })
-  }
-
+      return [...prev, { ...newItem, quantity: 1 }];
+    });
+  };
 
   const removeProduct = (productId) => {
-    setCartItems(prev =>
-
+    setCartItems((prev) =>
       prev.reduce((ack, item) => {
         if (item.id === productId) {
           if (item.quantity === 1) return ack;
@@ -47,10 +40,9 @@ const ProductsProvider: React.FC = ({ children }) => {
         } else {
           return [...ack, item];
         }
-      }, [] as ICartItem[])
+      }, [] as ICartItem[]),
     );
-  }
-
+  };
 
   return (
     <ProductsContext.Provider value={{ products, cartItems, fetchProducts, addProduct, removeProduct }}>

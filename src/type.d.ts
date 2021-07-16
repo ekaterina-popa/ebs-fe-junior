@@ -5,11 +5,11 @@ interface IProduct {
   price: number;
 }
 
-interface ICartItem{
+interface ICartItem {
   id: number;
   name: string;
   category: Category;
-  quantity: number,
+  quantity: number;
   price: number;
 }
 
