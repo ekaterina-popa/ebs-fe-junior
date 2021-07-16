@@ -5,6 +5,14 @@ interface IProduct {
   price: number;
 }
 
+interface ICartItem{
+  id: number;
+  name: string;
+  category: Category;
+  quantity: number,
+  price: number;
+}
+
 interface ICategory {
   id: string;
   name: string;
@@ -12,6 +20,7 @@ interface ICategory {
 
 export type ProductsContextType = {
   products: IProduct[];
+  cartItems: ICartItem[];
   fetchProducts: () => void;
   addProduct: (product: IProduct) => void;
   removeProduct: (id: number) => void;

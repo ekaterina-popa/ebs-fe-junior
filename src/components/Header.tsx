@@ -4,19 +4,13 @@ import { NavLink } from 'react-router-dom';
 const Header = () => {
   return (
     <div style={{ background: 'gray', padding: '20px' }}>
-      <nav style={{ listStyle: 'none' }}>
-        <li>
-          {' '}
-          <NavLink exact to="/">
-            Products
-          </NavLink>
-        </li>
-        <li>
-          {' '}
-          <NavLink exact to="/cart">
-            Cart
-          </NavLink>
-        </li>
+      <nav >
+        <NavLink exact to="/" style={{ textDecoration: "none", paddingRight: "10px" }}>
+          Products
+        </NavLink>
+        <NavLink exact to="/cart" style={{ textDecoration: "none", paddingRight: "10px" }}>
+          Cart
+        </NavLink>
       </nav>
     </div>
   );
